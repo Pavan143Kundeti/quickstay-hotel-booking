@@ -1,0 +1,44 @@
+{
+  "name": "QuickStay - Luxury Hotel Booking",
+  "short_name": "QuickStay",
+  "description": "Luxury hotel booking across India with authentic hospitality and modern comfort",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#FF6B35",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=192&h=192&fit=crop",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=512&h=512&fit=crop",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["travel", "lifestyle", "business"],
+  "lang": "en",
+  "dir": "ltr",
+  "scope": "/",
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "screenshots": [
+    {
+      "src": "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=1280&h=720&fit=crop",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=750&h=1334&fit=crop",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ]
+} 

@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickStay - Luxury Hotels Across India</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#FF6B35">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="QuickStay">
+    <link rel="apple-touch-icon" href="https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=192&h=192&fit=crop">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="assets/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="fas fa-hotel me-2"></i>QuickStay
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#gallery" data-translate="gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials" data-translate="testimonials">Testimonials</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faq" data-translate="faq">FAQ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact" data-translate="contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-light btn-sm ms-2" href="booking.html" data-translate="bookNow">Book Now</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown me-2">
+                            <button class="btn btn-outline-light btn-sm dropdown-toggle" type="button" id="currencyDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-money-bill-wave me-1"></i>
+                                <span id="currentCurrency">₹</span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="currencyDropdown">
+                                <li><a class="dropdown-item" href="#" onclick="changeCurrency('INR')">₹ INR</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="changeCurrency('USD')">$ USD</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="text-white me-3 d-none d-md-block">
+                            <small>
+                                <i class="fas fa-clock me-1"></i>
+                                <span id="liveClock" class="header-clock"></span>
+                            </small>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown me-2">
+                            <button class="btn btn-outline-light btn-sm dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-globe me-1"></i>
+                                <span id="currentLanguage">English</span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                                <li><a class="dropdown-item" href="#" onclick="changeLanguage('en')">English</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="changeLanguage('hi')">हिंदी</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="changeLanguage('ta')">தமிழ்</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="changeLanguage('te')">తెలుగు</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown me-2">
+                            <button class="btn btn-outline-light btn-sm dropdown-toggle" type="button" id="accessibilityDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-universal-access"></i>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="accessibilityDropdown">
+                                <li><a class="dropdown-item" href="#" onclick="increaseFontSize()"><i class="fas fa-plus me-2"></i>Increase Font</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="decreaseFontSize()"><i class="fas fa-minus me-2"></i>Decrease Font</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#" onclick="toggleHighContrast()"><i class="fas fa-adjust me-2"></i>High Contrast</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item ms-2">
+                        <button class="btn btn-outline-light btn-sm" id="darkModeToggle">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-overlay">
+            <div class="container">
+                <div class="row min-vh-100 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                            <h3 class="text-white" id="personalizedGreeting">Welcome to QuickStay!</h3>
+                        </div>
+                        <h1 class="display-4 fw-bold text-white mb-4">
+                            Experience Luxury Across India
+                        </h1>
+                        <p class="lead text-white mb-4">
+                            Discover the perfect blend of comfort and culture at QuickStay hotels. 
+                            From the bustling streets of Mumbai to the serene backwaters of Kerala, 
+                            we offer exceptional hospitality with authentic Indian warmth.
+                        </p>
+                                            <div class="d-flex gap-3">
+                        <a href="booking.html" class="btn btn-primary btn-lg" data-translate="bookNow">
+                            <i class="fas fa-calendar-check me-2"></i>Book Your Stay
+                        </a>
+                        <a href="availability.html" class="btn btn-outline-light btn-lg" data-translate="checkAvailability">
+                            <i class="fas fa-search me-2"></i>Check Availability
+                        </a>
+                        <button class="btn btn-outline-light btn-lg" data-bs-toggle="modal" data-bs-target="#roomComparisonModal" data-translate="compareRooms">
+                            <i class="fas fa-balance-scale me-2"></i>Compare Rooms
+                        </button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold" data-translate="gallery">Our Luxury Rooms</h2>
+                    <p class="lead">Experience comfort and elegance in our carefully designed rooms</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div id="roomCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#roomCarousel" data-bs-slide-to="0" class="active"></button>
+                            <button type="button" data-bs-target="#roomCarousel" data-bs-slide-to="1"></button>
+                            <button type="button" data-bs-target="#roomCarousel" data-bs-slide-to="2"></button>
+                            <button type="button" data-bs-target="#roomCarousel" data-bs-slide-to="3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=600&h=400&fit=crop" class="d-block w-100 rounded" alt="Deluxe Room - Jaipur">
+                                    </div>
+                                    <div class="col-md-6 d-flex align-items-center">
+                                        <div class="p-4">
+                                            <h3>Deluxe Room - Jaipur</h3>
+                                            <p class="text-muted">Experience royal comfort in the Pink City with traditional Rajasthani decor and modern amenities.</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span class="h4 text-primary">₹8,500/night</span>
+                                                <a href="booking.html" class="btn btn-primary">Book Now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&h=400&fit=crop" class="d-block w-100 rounded" alt="Sea View Suite - Goa">
+                                    </div>
+                                    <div class="col-md-6 d-flex align-items-center">
+                                        <div class="p-4">
+                                            <h3>Sea View Suite - Goa</h3>
+                                            <p class="text-muted">Wake up to breathtaking ocean views with Portuguese-inspired architecture and beach access.</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span class="h4 text-primary">₹12,000/night</span>
+                                                <a href="booking.html" class="btn btn-primary">Book Now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&h=400&fit=crop" class="d-block w-100 rounded" alt="Business Suite - Mumbai">
+                                    </div>
+                                    <div class="col-md-6 d-flex align-items-center">
+                                        <div class="p-4">
+                                            <h3>Business Suite - Mumbai</h3>
+                                            <p class="text-muted">Perfect for business travelers with city skyline views and state-of-the-art facilities.</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span class="h4 text-primary">₹15,000/night</span>
+                                                <a href="booking.html" class="btn btn-primary">Book Now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=600&h=400&fit=crop" class="d-block w-100 rounded" alt="Heritage Room - Delhi">
+                                    </div>
+                                    <div class="col-md-6 d-flex align-items-center">
+                                        <div class="p-4">
+                                            <h3>Heritage Room - Delhi</h3>
+                                            <p class="text-muted">Immerse yourself in Delhi's rich history with Mughal-inspired interiors and modern luxury.</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span class="h4 text-primary">₹10,500/night</span>
+                                                <a href="booking.html" class="btn btn-primary">Book Now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#roomCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#roomCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Animated Counters Section -->
+    <section id="counters" class="py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 mb-4">
+                    <div class="counter-item">
+                        <i class="fas fa-bed fa-3x mb-3"></i>
+                        <h2 class="display-4 fw-bold" id="roomsBooked">0</h2>
+                        <p class="lead">Rooms Booked</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="counter-item">
+                        <i class="fas fa-smile fa-3x mb-3"></i>
+                        <h2 class="display-4 fw-bold" id="happyGuests">0</h2>
+                        <p class="lead">Happy Guests</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="counter-item">
+                        <i class="fas fa-map-marker-alt fa-3x mb-3"></i>
+                        <h2 class="display-4 fw-bold" id="citiesServed">0</h2>
+                        <p class="lead">Cities Served</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="counter-item">
+                        <i class="fas fa-star fa-3x mb-3"></i>
+                        <h2 class="display-4 fw-bold" id="averageRating">0</h2>
+                        <p class="lead">Average Rating</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offers & Coupons Section -->
+    <section id="offers" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold" data-translate="deals">Deals & Discounts</h2>
+                    <p class="lead">Exclusive offers to make your stay even more special</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100 border-0 shadow-lg offer-card">
+                        <div class="card-body text-center p-4">
+                            <div class="offer-badge mb-3">
+                                <span class="badge bg-danger fs-6">10% OFF</span>
+                            </div>
+                            <h5 class="card-title">Jaipur Heritage Special</h5>
+                            <p class="card-text">Experience the Pink City with our exclusive heritage discount. Valid for bookings in Jaipur hotels.</p>
+                            <div class="offer-details">
+                                <p class="text-muted"><i class="fas fa-calendar me-2"></i>Valid till: 31st March 2025</p>
+                                <p class="text-muted"><i class="fas fa-map-marker-alt me-2"></i>Location: Jaipur, Rajasthan</p>
+                            </div>
+                            <button class="btn btn-outline-primary mt-3" onclick="copyCoupon('JAIPUR10')">
+                                <i class="fas fa-copy me-2"></i>Copy Code: JAIPUR10
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100 border-0 shadow-lg offer-card">
+                        <div class="card-body text-center p-4">
+                            <div class="offer-badge mb-3">
+                                <span class="badge bg-success fs-6">FREE BREAKFAST</span>
+                            </div>
+                            <h5 class="card-title">Goa Summer Deal</h5>
+                            <p class="card-text">Enjoy complimentary breakfast with every booking in Goa. Perfect for beach lovers!</p>
+                            <div class="offer-details">
+                                <p class="text-muted"><i class="fas fa-calendar me-2"></i>Valid till: 30th June 2025</p>
+                                <p class="text-muted"><i class="fas fa-map-marker-alt me-2"></i>Location: Goa</p>
+                            </div>
+                            <button class="btn btn-outline-success mt-3" onclick="copyCoupon('GOABREAKFAST')">
+                                <i class="fas fa-copy me-2"></i>Copy Code: GOABREAKFAST
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100 border-0 shadow-lg offer-card">
+                        <div class="card-body text-center p-4">
+                            <div class="offer-badge mb-3">
+                                <span class="badge bg-warning fs-6">15% OFF</span>
+                            </div>
+                            <h5 class="card-title">Business Traveler Special</h5>
+                            <p class="card-text">Special discount for business travelers in Bengaluru and Mumbai. Extended stay benefits.</p>
+                            <div class="offer-details">
+                                <p class="text-muted"><i class="fas fa-calendar me-2"></i>Valid till: 31st December 2025</p>
+                                <p class="text-muted"><i class="fas fa-map-marker-alt me-2"></i>Location: Bengaluru, Mumbai</p>
+                            </div>
+                            <button class="btn btn-outline-warning mt-3" onclick="copyCoupon('BUSINESS15')">
+                                <i class="fas fa-copy me-2"></i>Copy Code: BUSINESS15
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold" data-translate="testimonials">What Our Guests Say</h2>
+                    <p class="lead">Real experiences from our valued customers across India</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="mb-3">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                            </div>
+                            <p class="card-text">"The service was absolutely fantastic! Staff was very helpful and the room was spotless. Perfect location in Jaipur for exploring the city."</p>
+                            <h6 class="card-title">Priya Sharma</h6>
+                            <small class="text-muted">Mumbai, Maharashtra</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="mb-3">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                            </div>
+                            <p class="card-text">"Amazing experience in Goa! The sea view was breathtaking and the food was delicious. Will definitely come back again."</p>
+                            <h6 class="card-title">Rajesh Kumar</h6>
+                            <small class="text-muted">Bangalore, Karnataka</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="mb-3">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                            </div>
+                            <p class="card-text">"Business trip was made comfortable with excellent facilities. The staff understood all my needs and provided top-notch service."</p>
+                            <h6 class="card-title">Anjali Patel</h6>
+                            <small class="text-muted">Chennai, Tamil Nadu</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold" data-translate="faq">Frequently Asked Questions</h2>
+                    <p class="lead">Everything you need to know about traveling in India</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    Is it safe to travel in India?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes, India is generally safe for travelers. Our hotels are located in secure areas with 24/7 security. We recommend following standard travel precautions and staying aware of your surroundings.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    What about food safety and hygiene?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    All our hotels maintain the highest standards of food hygiene. Our restaurants serve both Indian and international cuisine prepared in clean, modern kitchens with fresh ingredients.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    How do I respect local customs and culture?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    India is culturally diverse. We recommend dressing modestly, removing shoes before entering temples, and being respectful of religious practices. Our staff can guide you on local customs.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    What is the best time to visit different cities?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    October to March is generally pleasant across most of India. Goa is best from November to March, while hill stations like Shimla are perfect in summer. We can help you plan the perfect timing for your destination.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Subscription Section -->
+    <section id="newsletter" class="py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <h2 class="display-5 fw-bold mb-3" data-translate="newsletter">Stay Updated</h2>
+                    <p class="lead mb-4">Subscribe to our newsletter for exclusive offers and travel tips</p>
+                    <form id="newsletterForm" class="d-flex gap-2">
+                        <input type="email" class="form-control form-control-lg" id="newsletterEmail" placeholder="Enter your email address" required>
+                        <button type="submit" class="btn btn-primary btn-lg" data-translate="subscribe">
+                            <i class="fas fa-paper-plane me-2"></i>Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold" data-translate="contact">Contact Us</h2>
+                    <p class="lead">Get in touch with us for any queries or special requests</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8 mb-4">
+                    <div class="card shadow">
+                        <div class="card-body p-5">
+                            <form id="contactForm">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="firstName" class="form-label">First Name *</label>
+                                        <input type="text" class="form-control" id="firstName" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="lastName" class="form-label">Last Name *</label>
+                                        <input type="text" class="form-control" id="lastName" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email Address *</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Phone Number *</label>
+                                    <input type="tel" class="form-control" id="phone" required>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="city" class="form-label">City *</label>
+                                        <input type="text" class="form-control" id="city" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="state" class="form-label">State *</label>
+                                        <select class="form-select" id="state" required>
+                                            <option value="">Select State</option>
+                                            <option value="Maharashtra">Maharashtra</option>
+                                            <option value="Delhi">Delhi</option>
+                                            <option value="Karnataka">Karnataka</option>
+                                            <option value="Tamil Nadu">Tamil Nadu</option>
+                                            <option value="Telangana">Telangana</option>
+                                            <option value="Rajasthan">Rajasthan</option>
+                                            <option value="Kerala">Kerala</option>
+                                            <option value="Goa">Goa</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="pinCode" class="form-label">PIN Code *</label>
+                                    <input type="text" class="form-control" id="pinCode" pattern="[0-9]{6}" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Message</label>
+                                    <textarea class="form-control" id="message" rows="4"></textarea>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        <i class="fas fa-paper-plane me-2"></i>Send Message
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Google Maps Section -->
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="fas fa-map-marker-alt me-2"></i>Our Location</h5>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="map-container" style="height: 400px; position: relative;">
+                                <iframe 
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.5!2d77.2090!3d28.6139!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce2a20e8e2e1f%3A0x7c0d6c0b4c0b4c0b!2sConnaught%20Place%2C%20New%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1234567890"
+                                    width="100%" 
+                                    height="400" 
+                                    style="border:0;" 
+                                    allowfullscreen="" 
+                                    loading="lazy" 
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-hotel me-2"></i>QuickStay</h5>
+                    <p class="mb-0">Luxury hotels across India with authentic hospitality and modern comfort.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">&copy; 2025 QuickStay. All rights reserved.</p>
+                    <div class="mt-2">
+                        <a href="https://www.facebook.com/pavankumar.kundeti.77" target="_blank" class="text-white me-3" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://x.com/PAVAN_KUMAR_TDP" target="_blank" class="text-white me-3" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/in/pavankumarkondeti?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bn%2FqboTBARaarOszKyUr3HA%3D%3D" target="_blank" class="text-white me-3" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://instagram.com" target="_blank" class="text-white me-3" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/919876543210" target="_blank" class="text-white" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Room Comparison Modal -->
+    <div class="modal fade" id="roomComparisonModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="fas fa-balance-scale me-2"></i>Room Type Comparison</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="table-primary">
+                                <tr>
+                                    <th>Features</th>
+                                    <th>Standard Room</th>
+                                    <th>Deluxe Room</th>
+                                    <th>Premium Suite</th>
+                                    <th>Executive Suite</th>
+                                    <th>Presidential Suite</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Price per Night</strong></td>
+                                    <td class="text-primary fw-bold">₹5,000</td>
+                                    <td class="text-primary fw-bold">₹8,500</td>
+                                    <td class="text-primary fw-bold">₹12,000</td>
+                                    <td class="text-primary fw-bold">₹15,000</td>
+                                    <td class="text-primary fw-bold">₹25,000</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Room Size</strong></td>
+                                    <td>250 sq ft</td>
+                                    <td>350 sq ft</td>
+                                    <td>500 sq ft</td>
+                                    <td>750 sq ft</td>
+                                    <td>1200 sq ft</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>WiFi</strong></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Air Conditioning</strong></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Free Breakfast</strong></td>
+                                    <td><i class="fas fa-times text-danger"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>City View</strong></td>
+                                    <td><i class="fas fa-times text-danger"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Mini Bar</strong></td>
+                                    <td><i class="fas fa-times text-danger"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Room Service</strong></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Balcony</strong></td>
+                                    <td><i class="fas fa-times text-danger"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Conference Room</strong></td>
+                                    <td><i class="fas fa-times text-danger"></i></td>
+                                    <td><i class="fas fa-times text-danger"></i></td>
+                                    <td><i class="fas fa-times text-danger"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Butler Service</strong></td>
+                                    <td><i class="fas fa-times text-danger"></i></td>
+                                    <td><i class="fas fa-times text-danger"></i></td>
+                                    <td><i class="fas fa-times text-danger"></i></td>
+                                    <td><i class="fas fa-times text-danger"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Private Pool</strong></td>
+                                    <td><i class="fas fa-times text-danger"></i></td>
+                                    <td><i class="fas fa-times text-danger"></i></td>
+                                    <td><i class="fas fa-times text-danger"></i></td>
+                                    <td><i class="fas fa-times text-danger"></i></td>
+                                    <td><i class="fas fa-check text-success"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="booking.html" class="btn btn-primary">
+                        <i class="fas fa-calendar-check me-2"></i>Book Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Chatbot Modal -->
+    <div class="modal fade" id="chatbotModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">
+                        <i class="fas fa-robot me-2"></i>QuickStay Assistant
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" style="height: 400px; overflow-y: auto;">
+                    <div id="chatMessages" class="mb-3">
+                        <!-- Chat messages will be dynamically added here -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="chatInput" placeholder="Ask me anything about QuickStay..." aria-label="Chat message">
+                        <button class="btn btn-primary" type="button" onclick="sendChatMessage()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Confirmation Modal -->
+    <div class="modal fade" id="bookingModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Namaste! 🙏</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Your booking has been confirmed successfully!</p>
+                    <p>We look forward to welcoming you to QuickStay. A confirmation email has been sent to your registered email address.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Thank You!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Chatbot Button -->
+    <button id="chatbotButton" class="btn btn-primary position-fixed" style="bottom: 20px; right: 80px; z-index: 1000; width: 50px; height: 50px; border-radius: 50%;">
+        <i class="fas fa-robot"></i>
+    </button>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="btn btn-primary position-fixed" style="bottom: 20px; right: 20px; z-index: 1000; display: none;">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/script.js"></script>
+    
+    <!-- PWA Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    })
+                    .catch(function(err) {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
+</body>
+</html> 

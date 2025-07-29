@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Stay - QuickStay</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="assets/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-hotel me-2"></i>QuickStay
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="availability.html">Availability</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="booking.html">Book Now</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-outline-light btn-sm ms-2" id="darkModeToggle">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Booking Section -->
+    <section class="booking-section py-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h1 class="display-4 fw-bold">Book Your Perfect Stay</h1>
+                    <p class="lead">Choose your dates, room type, and let us handle the rest</p>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                                            <div class="card shadow-lg">
+                            <div class="card-body p-5">
+                                <!-- Progress Bar -->
+                                <div class="mb-4">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span class="step-indicator active" id="step1">Step 1: Booking Details</span>
+                                        <span class="step-indicator" id="step2">Step 2: Guest Info</span>
+                                        <span class="step-indicator" id="step3">Step 3: Confirm</span>
+                                    </div>
+                                    <div class="progress" style="height: 8px;">
+                                        <div class="progress-bar bg-primary" id="progressBar" style="width: 33%"></div>
+                                    </div>
+                                </div>
+                                
+                                <form id="bookingForm">
+                                <!-- Location Selection -->
+                                <div class="mb-4">
+                                    <label for="location" class="form-label fw-bold">Select Location *</label>
+                                    <div class="d-flex gap-2">
+                                        <select class="form-select form-select-lg" id="location" required>
+                                            <option value="">Choose your preferred city</option>
+                                            <option value="mumbai">Mumbai, Maharashtra</option>
+                                            <option value="delhi">Delhi, NCR</option>
+                                            <option value="bangalore">Bengaluru, Karnataka</option>
+                                            <option value="chennai">Chennai, Tamil Nadu</option>
+                                            <option value="hyderabad">Hyderabad, Telangana</option>
+                                            <option value="jaipur">Jaipur, Rajasthan</option>
+                                            <option value="kochi">Kochi, Kerala</option>
+                                            <option value="goa">Goa</option>
+                                            <option value="pune">Pune, Maharashtra</option>
+                                            <option value="ahmedabad">Ahmedabad, Gujarat</option>
+                                        </select>
+                                        <button type="button" class="btn btn-outline-info" onclick="showTravelGuide()">
+                                            <i class="fas fa-map-marked-alt"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Auto-fill Suggestions for Contact Form -->
+                                <div class="mb-4">
+                                    <label for="contactCity" class="form-label fw-bold">Contact City (Auto-suggest)</label>
+                                    <div class="position-relative">
+                                        <input type="text" class="form-control" id="contactCity" placeholder="Start typing city name..." autocomplete="off">
+                                        <div class="suggestions-container" id="citySuggestions"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Date Selection -->
+                                <div class="row mb-4">
+                                    <div class="col-md-6">
+                                        <label for="checkIn" class="form-label fw-bold">Check-in Date *</label>
+                                        <input type="date" class="form-control form-control-lg" id="checkIn" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="checkOut" class="form-label fw-bold">Check-out Date *</label>
+                                        <input type="date" class="form-control form-control-lg" id="checkOut" required>
+                                    </div>
+                                </div>
+
+                                <!-- Room Type Selection -->
+                                <div class="mb-4">
+                                    <label for="roomType" class="form-label fw-bold">Room Type *</label>
+                                    <select class="form-select form-select-lg" id="roomType" required>
+                                        <option value="">Select room type</option>
+                                        <option value="standard">Standard Room - ₹5,000/night</option>
+                                        <option value="deluxe">Deluxe Room - ₹8,500/night</option>
+                                        <option value="premium">Premium Suite - ₹12,000/night</option>
+                                        <option value="executive">Executive Suite - ₹15,000/night</option>
+                                        <option value="presidential">Presidential Suite - ₹25,000/night</option>
+                                    </select>
+                                </div>
+
+                                <!-- Guest Information -->
+                                <div class="row mb-4">
+                                    <div class="col-md-6">
+                                        <label for="guests" class="form-label fw-bold">Number of Guests *</label>
+                                        <select class="form-select form-select-lg" id="guests" required>
+                                            <option value="">Select guests</option>
+                                            <option value="1">1 Guest</option>
+                                            <option value="2">2 Guests</option>
+                                            <option value="3">3 Guests</option>
+                                            <option value="4">4 Guests</option>
+                                            <option value="5">5+ Guests</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="children" class="form-label fw-bold">Children (0-12 years)</label>
+                                        <select class="form-select form-select-lg" id="children">
+                                            <option value="0">0 Children</option>
+                                            <option value="1">1 Child</option>
+                                            <option value="2">2 Children</option>
+                                            <option value="3">3 Children</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Special Requests -->
+                                <div class="mb-4">
+                                    <label for="specialRequests" class="form-label fw-bold">Special Requests</label>
+                                    <textarea class="form-control" id="specialRequests" rows="3" placeholder="Any special requirements or preferences?"></textarea>
+                                </div>
+
+                                <!-- Service Add-ons -->
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold">Service Add-ons (Optional)</label>
+                                    <div class="row">
+                                        <div class="col-md-4 mb-2">
+                                            <div class="addon-item card p-3 text-center" onclick="toggleAddon('breakfast')">
+                                                <i class="fas fa-utensils fa-2x text-primary mb-2"></i>
+                                                <h6>Breakfast</h6>
+                                                <p class="text-muted mb-2">Complimentary breakfast</p>
+                                                <span class="badge bg-primary" data-price-inr="500">₹500</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-2">
+                                            <div class="addon-item card p-3 text-center" onclick="toggleAddon('airport')">
+                                                <i class="fas fa-plane fa-2x text-primary mb-2"></i>
+                                                <h6>Airport Pickup</h6>
+                                                <p class="text-muted mb-2">Round trip airport transfer</p>
+                                                <span class="badge bg-primary" data-price-inr="1200">₹1,200</span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-2">
+                                            <div class="addon-item card p-3 text-center" onclick="toggleAddon('spa')">
+                                                <i class="fas fa-spa fa-2x text-primary mb-2"></i>
+                                                <h6>Spa Package</h6>
+                                                <p class="text-muted mb-2">Relaxing spa treatment</p>
+                                                <span class="badge bg-primary" data-price-inr="2000">₹2,000</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Coupon Code -->
+                                <div class="mb-4">
+                                    <label for="couponCode" class="form-label fw-bold">Coupon Code (Optional)</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="couponCode" placeholder="Enter coupon code">
+                                        <button class="btn btn-outline-primary" type="button" onclick="applyCoupon()">
+                                            <i class="fas fa-tag me-1"></i>Apply
+                                        </button>
+                                    </div>
+                                    <small class="text-muted">Try: JAIPUR10, GOABREAKFAST, BUSINESS15</small>
+                                </div>
+
+                                <!-- Rate Estimation -->
+                                <div class="card bg-light mb-4">
+                                    <div class="card-body">
+                                        <h5 class="card-title fw-bold">Rate Estimation</h5>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <p class="mb-1">Room Rate: <span id="roomRate">₹0</span>/night</p>
+                                                <p class="mb-1">Number of Nights: <span id="nights">0</span></p>
+                                                <p class="mb-1">GST (18%): <span id="gst">₹0</span></p>
+                                                <p class="mb-1" id="discountRow" style="display: none;">Discount: <span id="discountAmount" class="text-success">-₹0</span></p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h4 class="text-primary fw-bold">Total: <span id="totalAmount">₹0</span></h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg px-5">
+                                        <i class="fas fa-calendar-check me-2"></i>Confirm Booking
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking History Section -->
+    <section id="bookingHistory" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-5 fw-bold">My Bookings</h2>
+                    <p class="lead">View your previous bookings and manage your reservations</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div id="bookingHistoryContainer">
+                        <!-- Booking history will be dynamically loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-hotel me-2"></i>QuickStay</h5>
+                    <p class="mb-0">Luxury hotels across India with authentic hospitality and modern comfort.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">&copy; 2025 QuickStay. All rights reserved.</p>
+                    <div class="mt-2">
+                        <a href="https://www.facebook.com/pavankumar.kundeti.77" target="_blank" class="text-white me-3"><i class="fab fa-facebook"></i></a>
+                        <a href="https://x.com/PAVAN_KUMAR_TDP" target="_blank" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/in/pavankumarkondeti?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3Bn%2FqboTBARaarOszKyUr3HA%3D%3D" target="_blank" class="text-white"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Travel Guide Modal -->
+    <div class="modal fade" id="travelGuideModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="fas fa-map-marked-alt me-2"></i>City Travel Guide</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="travelGuideContent">
+                    <!-- Content will be dynamically loaded -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Confirmation Modal -->
+    <div class="modal fade" id="bookingModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Namaste! 🙏</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-3">
+                        <i class="fas fa-check-circle text-success" style="font-size: 3rem;"></i>
+                    </div>
+                    <h6 class="text-center mb-3">Your booking is confirmed!</h6>
+                    <div id="bookingDetails">
+                        <p><strong>Location:</strong> <span id="modalLocation"></span></p>
+                        <p><strong>Check-in:</strong> <span id="modalCheckIn"></span></p>
+                        <p><strong>Check-out:</strong> <span id="modalCheckOut"></span></p>
+                        <p><strong>Room Type:</strong> <span id="modalRoomType"></span></p>
+                        <p><strong>Total Amount:</strong> <span id="modalTotal"></span></p>
+                    </div>
+                    <p class="text-center mt-3">A confirmation email has been sent to your registered email address.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="printReceipt()">
+                        <i class="fas fa-print me-2"></i>Print Receipt
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="btn btn-primary position-fixed" style="bottom: 20px; right: 20px; z-index: 1000; display: none;">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/booking.js"></script>
+</body>
+</html> 
