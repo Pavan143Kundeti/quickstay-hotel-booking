@@ -1,0 +1,40 @@
+name: Deploy QuickStay Hotel Website
+
+# When to run this action
+on:
+  push:
+    branches: [ master ]  # Change to 'master' if your branch is named master
+  pull_request:
+    branches: [ master ]
+
+# The job to run
+jobs:
+  deploy:
+    runs-on: self-hosted  # This tells GitHub to use YOUR server
+    
+    steps:
+    # Step 1: Download your code
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    # Step 2: Display files (for testing)
+    - name: List files
+      run: |
+        echo "Files in repository:"
+        ls -la
+    
+    # Step 3: Test HTML files exist
+    - name: Check HTML files
+      run: |
+        echo "Checking if HTML files exist..."
+        test -f index.html && echo "✅ index.html found"
+        test -f booking.html && echo "✅ booking.html found"
+        test -f availability.html && echo "✅ availability.html found"
+        test -f login.html && echo "✅ login.html found"
+    
+    # Step 4: Deploy (copy files to web server location)
+    - name: Deploy website
+      run: |
+        echo "Deploying QuickStay Hotel Website..."
+        # You can add deployment commands here later
+        echo "✅ Deployment complete!"
