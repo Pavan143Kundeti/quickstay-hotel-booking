@@ -1,6 +1,9 @@
 # QuickStay - Luxury Hotel Booking Website
 
 A complete responsive hotel booking website built with HTML, CSS, JavaScript, and Bootstrap 5, featuring Indian cultural elements, real-time availability simulation, and next-level interactive features.
+## Testing Self-Hosted Runner
+This line was added to test GitHub Actions with self-hosted runner! 🚀
+
 
 ## 🌟 Features
 
